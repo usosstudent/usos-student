@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <title>Indeks - dla studentów - Uniwersytet Jagielloński w Krakowie</title>
+ <style>
+/* Reset i baza */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+/* Kontener strony */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Skip links */
+nav.skip-links {
+    background-color: #f5f5f5;
+    padding: 5px 10px;
+    font-size: 0.85rem;
+}
+nav.skip-links a {
+    margin-right: 10px;
+    color: #333;
+    text-decoration: none;
+}
+
+/* CAS bar */
+.cas-bar {
+    background-color: #e0e0e0;
+    padding: 8px 20px;
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.cas-bar a {
+    text-decoration: none;
+    color: #333;
+    margin-left: 5px;
+}
+
+/* Header */
+header {
+    display: flex;
+    align-items: center;
+    padding: 40px 20px;
+    background-color: #001f4d;
+}
+header img {
+    height: 60px;
+    margin-right: 15px;
+}
+header span {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Menu górne */
+nav#menu-top {
+    background-color: #e0e0e0;
+    padding: 10px;
+    text-transform: uppercase;
+}
+nav#menu-top ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+nav#menu-top a {
+    text-decoration: none;
+    color: #333;
+}
+nav#menu-top a.active {
+    font-weight: bold;
+}
+
+/* Layout */
+#layout-container {
+    display: flex;
+    gap: 24px;
+    padding: 20px 0;
+}
+
+/* Lewe menu */
+#menu-left {
+    width: 250px;
+    flex-shrink: 0;
+    background-color: #f5f5f5;
+    padding: 15px;
+}
+
+#menu-left ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+#menu-left li {
+    margin-bottom: 10px;
+}
+#menu-left a,
+#menu-left span {
+    display: block;
+    padding: 8px 10px;
+    border-radius: 4px;
+    width: 100%;
+    color: #333;
+    text-decoration: none;
+}
+#menu-left a.main-link {
+    background-color: #e0e0e0;
+    font-weight: bold;
+}
+#menu-left ul.submenu {
+    padding-left: 18px;
+    margin-top: 5px;
+}
+#menu-left ul.submenu a {
+    padding: 4px 5px;
+}
+#menu-left a:hover {
+    background-color: #dcdcdc;
+}
+
+/* Główna kolumna */
+#layout-main-content {
+    flex: 1;
+    min-width: 0;
+}
+
+/* ===== KAFELKI ===== */
+
+usos-module-link-tile-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1.2rem;
+}
+
+usos-module-link-tile {
+    display: block;
+    height: 160px;
+    background: #f8f8f8;
+    border-radius: 12px;
+    padding: 0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    transition: transform 0.18s, box-shadow 0.18s;
+}
+
+usos-module-link-tile:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+/* 🔗 Link w kafelku */
+usos-module-link-tile > template > a {
+    display: flex;
+    align-items: center; /* obrazek pionowo w środku */
+    gap: 14px;
+    padding: 5px;
+    height: 100%;
+    text-decoration: none;
+}
+
+/* Ikona */
+usos-module-link-tile #icon {
+    width: 110px;
+    height: 110px;
+    flex-shrink: 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* 🔧 Tekst (tytuł + opis) */
+usos-module-link-tile #content {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important; /* wyśrodkowanie pionowe całego tekstu */
+    text-align: left;
+    flex: 1;
+    gap: 2px;
+}
+
+/* Tytuł i opis */
+usos-module-link-tile #title {
+    font-weight: bold;
+    font-size: clamp(0.95rem, 1.1vw, 1.1rem); /* trochę większy niż opis */
+    margin: 0;
+    line-height: 1.2;
+}
+
+usos-module-link-tile #text {
+    font-size: clamp(0.8rem, 0.95vw, 0.85rem);
+    color: #333;
+    line-height: 1.2;
+    margin: 0;
+}
+
+/* ===== RESPONSYWNOŚĆ ===== */
+
+@media (max-width: 900px) {
+    usos-module-link-tile {
+        height: 140px;
+    }
+    usos-module-link-tile #icon {
+        width: 90px;
+        height: 90px;
+    }
+}
+
+@media (max-width: 900px) {
+    #layout-container {
+        flex-direction: column;
+    }
+
+    #menu-left {
+        width: 100%;
+    }
+
+    usos-module-link-tile-container {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    }
+}
+
+@media (max-width: 520px) {
+    usos-module-link-tile-container {
+        grid-template-columns: 1fr;
+    }
+
+    usos-module-link-tile > template > a {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    usos-module-link-tile #content {
+        align-items: center;
+    }
+}
+
+</style>
+</head>
+
+<body>
+<div class="container">
+
+    <!-- Skip links -->
+    <nav class="skip-links">
+        <a href="#menu-top">Przejdź do menu głównego</a>
+        <a href="#menu-left">Przejdź do podmenu</a>
+        <a href="#layout-main-content">Przejdź do treści</a>
+    </nav>
+
+    <!-- CAS bar -->
+    <div class="cas-bar">
+        <span><b>Uniwersytet Jagielloński w Krakowie</b> - Centralny System Uwierzytelniania</span>
+        <span>
+            Zalogowany użytkownik: <b>Kamila Szęszoł</b> |
+            <a href="#">zmień hasło</a> |
+            <a href="#">wyloguj się</a> |
+            <a href="#">EN</a>
+        </span>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <img src="https://www.usosweb.uj.edu.pl//img/header-logo.svg" alt="Strona główna">
+        <span>Uniwersytet Jagielloński w Krakowie</span>
+    </header>
+
+    <!-- Menu główne -->
+    <nav id="menu-top">
+        <ul>
+            <li><a href="#">aktualności</a></li>
+            <li><a href="#">katalog</a></li>
+            <li><a href="#">mój USOSweb</a></li>
+            <li><a href="#" class="active">dla studentów</a></li>
+            <li><a href="#" style="color:#888;">dla pracowników</a></li>
+            <li><a href="#">dla wszystkich</a></li>
+            <li><a href="#">KONTAKT</a></li>
+        </ul>
+    </nav>
+
+    <!-- Główna zawartość -->
+    <div id="layout-container">
+
+    <!-- Lewe menu boczne -->
+    <aside id="menu-left">
+            <ul>
+                <li><a href="#index" class="main-link">INDEKS</a></li>
+                <li><a href="#obsluga">OBSŁUGA</a></li>
+                <li>
+                    <a href="#rejestracja">REJESTRACJE</a>
+                    <ul class="submenu">
+                        <li><a href="#kalendarz">► kalendarz</a></li>
+                        <li><a href="#koszyk">► koszyk</a></li>
+                        <li><a href="#na-przedmioty">► na przedmioty</a></li>
+                        <li><a href="#bezposrednie-grupy">► bezpośrednie do grup</a></li>
+                        <li><a href="#preferencje-grup">► preferencje grup</a></li>
+                    </ul>
+                </li>
+                <li><a href="#rejestracje-egzaminy">REJESTRACJE NA EGZAMINY</a></li>
+                <li><a href="#zetony">REJESTRACJE ŻETONOWE</a></li>
+                <li>
+                    <span>MOJE STUDIA</span>
+                    <ul class="submenu">
+                        <li><a href="sprawdziany.html">► sprawdziany</a></li>
+                        <li><a href="#oceny">► oceny</a></li>
+                        <li><a href="#podpiecia">► podpięcia</a></li>
+                        <li><a href="#deklaracja">► deklaracja</a></li>
+                        <li><a href="#decyzje">► decyzje</a></li>
+                        <li><a href="#zaliczenia-etapow">► zaliczenia etapów</a></li>
+                        <li><a href="#grupy-dziekanskie">► grupy dziekańskie</a></li>
+                        <li><a href="#podania">► podania</a></li>
+                        <li><a href="#rankingi">► rankingi</a></li>
+                        <li><a href="#stypendia">► stypendia</a></li>
+                        <li><a href="#wymiana">► wymiana studencka</a></li>
+                        <li><a href="#ankiety">► ankiety</a></li>
+                        <li><a href="#platnosci">► płatności</a></li>
+                        <li><a href="#dyplomy">► dyplomy</a></li>
+                        <li><a href="#obiegowka">► obiegówka</a></li>
+                        <li><a href="#mlegitymacja">► mLegitymacja</a></li>
+                    </ul>
+                </li>
+                <li><a href="#spotkania">SPOTKANIA</a></li>
+            </ul>
+    </aside>
+
+<!-- Główna treść -->
+<main id="layout-main-content" slot="page-body" tabindex="-1">
+    <div id="layout-c22">
+        <usos-module-link-tile-container>
+            <slot></slot>
+
+<!-- Rejestracja -->
+<usos-module-link-tile id="rejestracje_link" href="#rejestracje_box">
+    <template shadowrootmode="open">
+        <a href="#rejestracja" style="text-decoration:none; display:block;">
+            <div style="display:flex; align-items:center; gap:14px; padding:30px; min-height:80px;">
+                
+                <!-- Obrazek po lewej -->
+                <div id="icon" aria-hidden="true"
+                     style="
+                        width:94px;
+                        height:94px;
+                        flex-shrink:0;
+                        margin-left:-10px;
+                        background-image: url('https://www.usosweb.uj.edu.pl/img/moduly/rejestracja.svg');
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                     ">
+                </div>
+
+                <!-- Tekst wyśrodkowany pionowo -->
+                <div id="content" style="display:flex; flex-direction:column; justify-content:center; text-align:left; height:100%;">
+                    <div style="font-weight:bold; font-size:1rem;">Rejestracja</div>
+                    <div style="font-size:0.85rem; color:#333; margin-top:2px;">Zarejestruj się na przedmioty lub egzaminy, obejrzyj koszyk.</div>
+                </div>
+            </div>
+        </a>
+    </template>
+</usos-module-link-tile>
+
+
+<!-- Sprawdziany -->
+<usos-module-link-tile id="sprawdziany_link" href="#sprawdziany_box">
+    <template shadowrootmode="open">
+        <a href="sprawdziany.html" style="text-decoration:none; display:block;">
+            <div style="display:flex; align-items:center; gap:14px; padding:30px; min-height:80px;">
+                
+                <!-- Obrazek po lewej -->
+                <div id="icon" aria-hidden="true"
+                     style="
+                        width:94px;
+                        height:94px;
+                        flex-shrink:0;
+                        margin-left:-10px;
+                        background-image: url('https://www.usosweb.uj.edu.pl/img/moduly/sprawdziany.svg');
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                     ">
+                </div>
+
+                <!-- Tekst wyśrodkowany pionowo -->
+                <div id="content" style="display:flex; flex-direction:column; justify-content:center; text-align:left; height:100%;">
+                    <div style="font-weight:bold; font-size:1rem;">Sprawdziany</div>
+                    <div style="font-size:0.85rem; color:#333; margin-top:2px;">Zadania, sprawdziany, egzaminy, oceny i związki między nimi.</div>
+                </div>
+            </div>
+        </a>
+    </template>
+</usos-module-link-tile>
+
+
+
+
+<!-- Oceny końcowe -->
+<usos-module-link-tile id="oceny_link" href="#oceny_box">
+    <template shadowrootmode="open">
+        <a href="#oceny" style="text-decoration:none; display:block;">
+            <div style="display:flex; align-items:center; gap:14px; padding:30px; min-height:80px;">
+                
+                <!-- Obrazek po lewej -->
+                <div id="icon" aria-hidden="true"
+                     style="
+                        width:94px;
+                        height:94px;
+                        flex-shrink:0;
+                        margin-left:-10px;
+                        background-image: url('https://www.usosweb.uj.edu.pl/img/moduly/oceny.svg');
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                     ">
+                </div>
+
+                <!-- Tekst wyśrodkowany pionowo -->
+                <div id="content" style="display:flex; flex-direction:column; justify-content:center; text-align:left; height:100%;">
+                    <div style="font-weight:bold; font-size:1rem;">Oceny końcowe</div>
+                    <div style="font-size:0.85rem; color:#333; margin-top:2px;">Aktualne wartości ocen końcowych z zaliczanych przedmiotów.</div>
+                </div>
+            </div>
+        </a>
+    </template>
+</usos-module-link-tile>
+
+
+
+
+<!-- Podpięcia -->
+<usos-module-link-tile id="podpiecia_link" href="#podpiecia_box">
+    <template shadowrootmode="open">
+        <a href="#podpiecia" style="text-decoration:none; display:block;">
+            <div style="display:flex; align-items:center; gap:14px; padding:30px; min-height:80px;">
+                
+                <!-- Obrazek po lewej -->
+                <div id="icon" aria-hidden="true"
+                     style="
+                        width:94px;
+                        height:94px;
+                        flex-shrink:0;
+                        margin-left:-10px;
+                        background-image: url('https://www.usosweb.uj.edu.pl/img/moduly/podpiecia.svg');
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                     ">
+                </div>
+
+                <!-- Tekst wyśrodkowany pionowo -->
+                <div id="content" style="display:flex; flex-direction:column; justify-content:center; text-align:left; height:100%;">
+                    <div style="font-weight:bold; font-size:1rem;">Podpięcia</div>
+                    <div style="font-size:0.85rem; color:#333; margin-top:2px;">Wskaż związek zaliczanego przedmiotu z programem studiów.</div>
+                </div>
+            </div>
+        </a>
+    </template>
+</usos-module-link-tile>
+
+
+
+
+
+<!-- Decyzje -->
+<usos-module-link-tile id="decyzje_link" href="#decyzje_box">
+    <template shadowrootmode="open">
+        <a href="#decyzje" style="text-decoration:none; display:block;">
+            <div style="display:flex; align-items:center; gap:14px; padding:30px; min-height:80px;">
+                
+                <!-- Obrazek po lewej -->
+                <div id="icon" aria-hidden="true"
+                     style="
+                        width:94px;
+                        height:94px;
+                        flex-shrink:0;
+                        margin-left:-10px;
+                        background-image: url('https://www.usosweb.uj.edu.pl/img/moduly/decyzje.svg');
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                     ">
+                </div>
+
+                <!-- Tekst wyśrodkowany pionowo -->
+                <div id="content" style="display:flex; flex-direction:column; justify-content:center; text-align:left; height:100%;">
+                    <div style="font-weight:bold; font-size:1rem;">Decyzje</div>
+                    <div style="font-size:0.85rem; color:#333; margin-top:2px;">Zobacz i uzupełnij decyzje dziekanatu związane z Twoimi studiami.</div>
+                </div>
+            </div>
+        </a>
+    </template>
+</usos-module-link-tile>
+
+
+
+
+
+
+<!-- Zaliczenia etapów -->
+<usos-module-link-tile id="zaliczenia_link" href="#zaliczenia_box">
+    <template shadowrootmode="open">
+        <a href="#zaliczenia" style="text-decoration:none; display:block;">
+            <div style="display:flex; align-items:center; gap:14px; padding:30px; min-height:80px;">
+                
+                <!-- Obrazek po lewej -->
+                <div id="icon" aria-hidden="true"
+                     style="
+                        width:94px;
+                        height:94px;
+                        flex-shrink:0;
+                        margin-left:-10px;
+                        background-image: url('https://www.usosweb.uj.edu.pl/img/moduly/zaliczenia.svg');
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                     ">
+                </div>
+
+                <!-- Tekst wyśrodkowany pionowo -->
+                <div id="content" style="display:flex; flex-direction:column; justify-content:center; text-align:left; height:100%;">
+                    <div style="font-weight:bold; font-size:1rem;">Zaliczenia etapów</div>
+                    <div style="font-size:0.85rem; color:#333; margin-top:2px;">Sprawdź swoje osiągnięcia i spełnienie wymagań etapowych.</div>
+                </div>
+            </div>
+        </a>
+    </template>
+</usos-module-link-tile>
+
+
+
+<!-- Podania -->
+<usos-module-link-tile id="podania_link" href="#podania_box">
+    <template shadowrootmode="open">
+        <a href="#podania" style="text-decoration:none; display:block;">
+            <div style="display:flex; align-items:center; gap:14px; padding:30px; min-height:80px;">
+                
+                <!-- Obrazek po lewej -->
+                <div id="icon" aria-hidden="true"
+                     style="
+                        width:94px;
+                        height:94px;
+                        flex-shrink:0;
+                        margin-left:-10px;
+                        background-image: url('https://www.usosweb.uj.edu.pl/img/moduly/podania.svg');
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                     ">
+                </div>
+
+                <!-- Tekst wyśrodkowany pionowo -->
+                <div id="content" style="display:flex; flex-direction:column; justify-content:center; text-align:left; height:100%;">
+                    <div style="font-weight:bold; font-size:1rem;">Podania</div>
+                    <div style="font-size:0.85rem; color:#333; margin-top:2px;">Składaj podania do dziekana, przeglądaj podjęte decyzje.</div>
+                </div>
+            </div>
+        </a>
+    </template>
+</usos-module-link-tile>
+
+
+
+
+
+
+<!-- Rankingi -->
+<usos-module-link-tile id="rankingi_link" href="#rankingi_box">
+    <template shadowrootmode="open">
+        <a href="#rankingi" style="text-decoration:none; display:block;">
+            <div style="display:flex; align-items:center; gap:14px; padding:30px; min-height:80px;">
+                
+                <!-- Obrazek po lewej -->
+                <div id="icon" aria-hidden="true"
+                     style="
+                        width:94px;
+                        height:94px;
+                        flex-shrink:0;
+                        margin-left:-10px;
+                        background-image: url('https://www.usosweb.uj.edu.pl/img/moduly/rankingi.svg');
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                     ">
+                </div>
+
+                <!-- Tekst wyśrodkowany pionowo -->
+                <div id="content" style="display:flex; flex-direction:column; justify-content:center; text-align:left; height:100%;">
+                    <div style="font-weight:bold; font-size:1rem;">Rankingi</div>
+                    <div style="font-size:0.85rem; color:#333; margin-top:2px;">Zobacz swoje pozycje w rankingach..</div>
+                </div>
+            </div>
+        </a>
+    </template>
+</usos-module-link-tile>
+
+
+
+
+
+
+
+
+<!-- Stypendia -->
+<usos-module-link-tile id="stypendia_link" href="#stypendia_box">
+    <template shadowrootmode="open">
+        <a href="#stypendia" style="text-decoration:none; display:block;">
+            <div style="display:flex; align-items:center; gap:14px; padding:30px; min-height:80px;">
+                
+                <!-- Obrazek po lewej -->
+                <div id="icon" aria-hidden="true"
+                     style="
+                        width:94px;
+                        height:94px;
+                        flex-shrink:0;
+                        margin-left:-10px;
+                        background-image: url('https://www.usosweb.uj.edu.pl/img/moduly/stypendia.svg');
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                     ">
+                </div>
+
+                <!-- Tekst wyśrodkowany pionowo -->
+                <div id="content" style="display:flex; flex-direction:column; justify-content:center; text-align:left; height:100%;">
+                    <div style="font-weight:bold; font-size:1rem;">Stypendia</div>
+                    <div style="font-size:0.85rem; color:#333; margin-top:2px;">Sprawdź przyznane stypendia, zmień numer konta.</div>
+                </div>
+            </div>
+        </a>
+    </template>
+</usos-module-link-tile>
+
+
+
+
+
+
+
+
+<!-- Wymiana studencka -->
+<usos-module-link-tile id="wymiana_link" href="#wymiana_box">
+    <template shadowrootmode="open">
+        <a href="#wymiana" style="text-decoration:none; display:block;">
+            <div style="display:flex; align-items:center; gap:14px; padding:30px; min-height:80px;">
+                
+                <!-- Obrazek po lewej -->
+                <div id="icon" aria-hidden="true"
+                     style="
+                        width:94px;
+                        height:94px;
+                        flex-shrink:0;
+                        margin-left:-10px;
+                        background-image: url('https://www.usosweb.uj.edu.pl/img/moduly/wymiana.svg');
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                     ">
+                </div>
+
+                <!-- Tekst wyśrodkowany pionowo -->
+                <div id="content" style="display:flex; flex-direction:column; justify-content:center; text-align:left; height:100%;">
+                    <div style="font-weight:bold; font-size:1rem;">Wymiana studencka</div>
+                    <div style="font-size:0.85rem; color:#333; margin-top:2px;">Przeglądaj możliwości wymiany studenckiej w ramach programu Erasmus+.</div>
+                </div>
+            </div>
+        </a>
+    </template>
+</usos-module-link-tile>
+
+
+
+
+
+
+
+<!-- Ankiety -->
+<usos-module-link-tile id="ankiety_link" href="#ankiety_box">
+    <template shadowrootmode="open">
+        <a href="#ankiety" style="text-decoration:none; display:block;">
+            <div style="display:flex; align-items:center; gap:14px; padding:30px; min-height:80px;">
+                
+                <!-- Obrazek po lewej -->
+                <div id="icon" aria-hidden="true"
+                     style="
+                        width:94px;
+                        height:94px;
+                        flex-shrink:0;
+                        margin-left:-10px;
+                        background-image: url('https://www.usosweb.uj.edu.pl/img/moduly/ankiety.svg');
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                     ">
+                </div>
+
+                <!-- Tekst wyśrodkowany pionowo -->
+                <div id="content" style="display:flex; flex-direction:column; justify-content:center; text-align:left; height:100%;">
+                    <div style="font-weight:bold; font-size:1rem;">Ankiety</div>
+                    <div style="font-size:0.85rem; color:#333; margin-top:2px;">Wypełnij i oglądaj wyniki ankiet.</div>
+                </div>
+            </div>
+        </a>
+    </template>
+</usos-module-link-tile>
+
+
+
+
+
+
+
+
+<!-- Dyplomy -->
+<usos-module-link-tile id="dyplomy_link" href="#dyplomy_box">
+    <template shadowrootmode="open">
+        <a href="#dyplomy" style="text-decoration:none; display:block;">
+            <div style="display:flex; align-items:center; gap:14px; padding:30px; min-height:80px;">
+                
+                <!-- Obrazek po lewej -->
+                <div id="icon" aria-hidden="true"
+                     style="
+                        width:94px;
+                        height:94px;
+                        flex-shrink:0;
+                        margin-left:-10px;
+                        background-image: url('https://www.usosweb.uj.edu.pl/img/moduly/dyplomy.svg');
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                     ">
+                </div>
+
+                <!-- Tekst wyśrodkowany pionowo -->
+                <div id="content" style="display:flex; flex-direction:column; justify-content:center; text-align:left; height:100%;">
+                    <div style="font-weight:bold; font-size:1rem;">Dyplomy</div>
+                    <div style="font-size:0.85rem; color:#333; margin-top:2px;">Zobacz swoje dyplomy.</div>
+                </div>
+            </div>
+        </a>
+    </template>
+</usos-module-link-tile>
+
+
+
+
+
+
+
+</main>
+</body>
+</html>
