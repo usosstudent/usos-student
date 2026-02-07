@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <title>Indeks - dla studentów - Uniwersytet Jagielloński w Krakowie</title>
+ <style>
+/* Reset i baza */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+/* Kontener strony */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Skip links */
+nav.skip-links {
+    background-color: #f5f5f5;
+    padding: 5px 10px;
+    font-size: 0.85rem;
+}
+nav.skip-links a {
+    margin-right: 10px;
+    color: #333;
+    text-decoration: none;
+}
+
+/* CAS bar */
+.cas-bar {
+    background-color: #e0e0e0;
+    padding: 8px 20px;
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.cas-bar a {
+    text-decoration: none;
+    color: #333;
+    margin-left: 5px;
+}
+
+/* Header */
+header {
+    display: flex;
+    align-items: center;
+    padding: 40px 20px;
+    background-color: #001f4d;
+}
+header img {
+    height: 60px;
+    margin-right: 15px;
+}
+header span {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Menu górne */
+nav#menu-top {
+    background-color: #e0e0e0;
+    padding: 10px;
+    text-transform: uppercase;
+}
+nav#menu-top ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+nav#menu-top a {
+    text-decoration: none;
+    color: #333;
+}
+nav#menu-top a.active {
+    font-weight: bold;
+}
+
+/* Layout */
+#layout-container {
+    display: flex;
+    gap: 24px;
+    padding: 20px 0;
+}
+
+/* Lewe menu */
+#menu-left {
+    width: 250px;
+    flex-shrink: 0;
+    background-color: #f5f5f5;
+    padding: 15px;
+}
+
+#menu-left ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+#menu-left li {
+    margin-bottom: 10px;
+}
+#menu-left a,
+#menu-left span {
+    display: block;
+    padding: 8px 10px;
+    border-radius: 4px;
+    width: 100%;
+    color: #333;
+    text-decoration: none;
+}
+#menu-left a.main-link {
+    background-color: #e0e0e0;
+    font-weight: bold;
+}
+#menu-left ul.submenu {
+    padding-left: 18px;
+    margin-top: 5px;
+}
+#menu-left ul.submenu a {
+    padding: 4px 5px;
+}
+#menu-left a:hover {
+    background-color: #dcdcdc;
+}
+
+/* Główna kolumna */
+#layout-main-content {
+    flex: 1;
+    min-width: 0;
+}
+
+
+/* ===== TABELA SPRAWDZIANY / INDEKS ===== */
+.usos-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #f5f5f5; /* taki sam jak lewe menu */
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.usos-table th,
+.usos-table td {
+    padding: 15px 20px; /* większy padding */
+    border-top: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    text-align: left;
+}
+
+.usos-table th:last-child,
+.usos-table td:last-child {
+    border-right: none;
+}
+
+.usos-table thead {
+    background: #001f4d; /* kolor nagłówka jak góra strony */
+    color: white;
+    border-bottom: 2px solid #001f4d;
+}
+
+.table-btn {
+    padding: 6px 12px; /* większe przyciski */
+    background: #001f4d;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+
+#layout-main-content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column; /* pionowo */
+    gap: 20px; /* odstęp między nagłówkiem a tabelą */
+}
+
+
+</style>
+</head>
+
+<body>
+
+
+<div class="container">
+
+    <!-- Skip links -->
+    <nav class="skip-links">
+        <a href="#menu-top">Przejdź do menu głównego</a>
+        <a href="#menu-left">Przejdź do podmenu</a>
+        <a href="#layout-main-content">Przejdź do treści</a>
+    </nav>
+
+    <!-- CAS bar -->
+    <div class="cas-bar">
+        <span><b>Uniwersytet Jagielloński w Krakowie</b> - Centralny System Uwierzytelniania</span>
+        <span>
+            Zalogowany użytkownik: <b>Kamila Szęszoł</b> |
+            <a href="#">zmień hasło</a> |
+            <a href="#">wyloguj się</a> |
+            <a href="#">EN</a>
+        </span>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <img src="https://www.usosweb.uj.edu.pl//img/header-logo.svg" alt="Strona główna">
+        <span>Uniwersytet Jagielloński w Krakowie</span>
+    </header>
+
+    <!-- Menu główne -->
+    <nav id="menu-top">
+        <ul>
+            <li><a href="#">aktualności</a></li>
+            <li><a href="#">katalog</a></li>
+            <li><a href="#">mój USOSweb</a></li>
+            <li><a href="#" class="active">dla studentów</a></li>
+            <li><a href="#" style="color:#888;">dla pracowników</a></li>
+            <li><a href="#">dla wszystkich</a></li>
+            <li><a href="#">KONTAKT</a></li>
+        </ul>
+    </nav>
+
+    <!-- Główna zawartość -->
+    <div id="layout-container">
+
+    <!-- Lewe menu boczne -->
+    <aside id="menu-left">
+            <ul>
+                <li><a href="usos.student.html">INDEKS</a></li>
+                <li><a href="#obsluga">OBSŁUGA</a></li>
+                <li>
+                    <a href="#rejestracja">REJESTRACJE</a>
+                    <ul class="submenu">
+                        <li><a href="#kalendarz">► kalendarz</a></li>
+                        <li><a href="#koszyk">► koszyk</a></li>
+                        <li><a href="#na-przedmioty">► na przedmioty</a></li>
+                        <li><a href="#bezposrednie-grupy">► bezpośrednie do grup</a></li>
+                        <li><a href="#preferencje-grup">► preferencje grup</a></li>
+                    </ul>
+                </li>
+                <li><a href="#rejestracje-egzaminy">REJESTRACJE NA EGZAMINY</a></li>
+                <li><a href="#zetony">REJESTRACJE ŻETONOWE</a></li>
+                <li>
+                    <span>MOJE STUDIA</span>
+                    <ul class="submenu">
+                        <li><a href="#sprawdziany" class="main-link">► sprawdziany</a></li>
+                        <li><a href="#oceny">► oceny</a></li>
+                        <li><a href="#podpiecia">► podpięcia</a></li>
+                        <li><a href="#deklaracja">► deklaracja</a></li>
+                        <li><a href="#decyzje">► decyzje</a></li>
+                        <li><a href="#zaliczenia-etapow">► zaliczenia etapów</a></li>
+                        <li><a href="#grupy-dziekanskie">► grupy dziekańskie</a></li>
+                        <li><a href="#podania">► podania</a></li>
+                        <li><a href="#rankingi">► rankingi</a></li>
+                        <li><a href="#stypendia">► stypendia</a></li>
+                        <li><a href="#wymiana">► wymiana studencka</a></li>
+                        <li><a href="#ankiety">► ankiety</a></li>
+                        <li><a href="#platnosci">► płatności</a></li>
+                        <li><a href="#dyplomy">► dyplomy</a></li>
+                        <li><a href="#obiegowka">► obiegówka</a></li>
+                        <li><a href="#mlegitymacja">► mLegitymacja</a></li>
+                    </ul>
+                </li>
+                <li><a href="#spotkania">SPOTKANIA</a></li>
+            </ul>
+    </aside>
+
+
+
+<!-- Główna treść -->
+<!-- Główna treść -->
+<div id="layout-main-content">
+  <h1 style="margin-bottom: 30px; background-color: #f5f5f5; padding: 15px; border-radius: 4px;">Sprawdziany</h1>
+
+  <table class="usos-table">
+    <thead>
+      <tr style="background-color: #001f4d; color: white;">
+        <th>Okres</th>
+        <th>Przedmiot</th>
+        <th>Kod</th>
+        <th>Prowadzący</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>2025/2026</td>
+        <td>Anatomia</td>
+        <td>LE.LE.JS.1o0031</td>
+        <td>Jerzy Walocha</td>
+        <td><a class="table-btn" href="anatomia.html">pokaż</a></td>
+      </tr>
+      <tr>
+        <td>2025/2026</td>
+        <td>Anatomia</td>
+        <td>LE.LE.JS.1o0031</td>
+        <td>Tomasz Bereza</td>
+        <td><a class="table-btn" href="anatomia2.html">pokaż</a></td>
+      </tr>
+      <tr>
+        <td>2025/2026</td>
+        <td>Biochemia</td>
+        <td>LE.LE.JS.1o0080</td>
+        <td>Kuśnierz-Cabala, Wróblewska</td>
+        <td><a class="table-btn" href="biochemia.html">pokaż</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+</body>
+</html>
