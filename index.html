@@ -14,6 +14,10 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
 }
+html {
+    scroll-behavior: smooth;
+}
+
 
 /* Kontener strony */
 .container {
@@ -254,15 +258,37 @@ usos-module-link-tile #text {
 
 
 
+/* ===== FOOTER — WERSJA POPRAWIONA ===== */
+
+.footer-box {
+    width: 100%;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+}
+
+.footer-inner {
+    max-width: 1200px;
+    margin: 0;              /* ← było auto */
+
+    padding: 20px;
+    font-size: 13px;
+    color: #555;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+
+    flex-wrap: nowrap;      /* ← kluczowe */
+}
+
+.footer-inner img {
+    height: 50px;
+    display: block;         /* ← zamiast float */
+    flex-shrink: 0;
+}
 
 
-
-
-
-
-
-
-.footer-box { width: 100%; background: #f5f5f5; /* taki jak lewe menu */ border-top: 1px solid #ddd; margin-top: 40px; } .footer-inner { max-width: 1200px; margin: 0 auto; padding: 20px; font-size: 13px; color: #555; }
 
 </style>
 </head>
@@ -300,11 +326,16 @@ usos-module-link-tile #text {
         <ul>
             <li><a href="#">aktualności</a></li>
             <li><a href="#">katalog</a></li>
-            <li><a href="#">mój USOSweb</a></li>
-            <li><a href="#" class="active">dla studentów</a></li>
+            <li><a href="usos.student.html">mój USOSweb</a></li>
+            <li><a href="index.html" class="active">dla studentów</a></li>
             <li><a href="#" style="color:#888;">dla pracowników</a></li>
             <li><a href="#">dla wszystkich</a></li>
-            <li><a href="#">KONTAKT</a></li>
+            <li><a href="kontakt.html">KONTAKT</a></li>
+
+
+
+
+
         </ul>
     </nav>
 
@@ -314,7 +345,7 @@ usos-module-link-tile #text {
     <!-- Lewe menu boczne -->
     <aside id="menu-left">
             <ul>
-                <li><a href="#index" class="main-link">INDEKS</a></li>
+                <li><a href="index.html" class="main-link">INDEKS</a></li>
                 <li><a href="#obsluga">OBSŁUGA</a></li>
                 <li>
                     <a href="#rejestracja">REJESTRACJE</a>
@@ -332,11 +363,11 @@ usos-module-link-tile #text {
                     <span>MOJE STUDIA</span>
                     <ul class="submenu">
                         <li><a href="sprawdziany.html">► sprawdziany</a></li>
-                        <li><a href="#oceny">► oceny</a></li>
+                        <li><a href="oceny.html">► oceny</a></li>
                         <li><a href="#podpiecia">► podpięcia</a></li>
-                        <li><a href="#deklaracja">► deklaracja</a></li>
-                        <li><a href="#decyzje">► decyzje</a></li>
-                        <li><a href="#zaliczenia-etapow">► zaliczenia etapów</a></li>
+                        <li><a href="deklaracja.html">► deklaracja</a></li>
+                        <li><a href="decyzje.html">► decyzje</a></li>
+                        <li><a href="zaliczenia.html">► zaliczenia etapów</a></li>
                         <li><a href="#grupy-dziekanskie">► grupy dziekańskie</a></li>
                         <li><a href="#podania">► podania</a></li>
                         <li><a href="#rankingi">► rankingi</a></li>
@@ -426,7 +457,7 @@ usos-module-link-tile #text {
 <!-- Oceny końcowe -->
 <usos-module-link-tile id="oceny_link" href="#oceny_box">
     <template shadowrootmode="open">
-        <a href="#oceny" style="text-decoration:none; display:block;">
+        <a href="oceny.html" style="text-decoration:none; display:block;">
             <div style="display:flex; align-items:center; gap:14px; padding:30px; min-height:80px;">
                 
                 <!-- Obrazek po lewej -->
@@ -493,7 +524,7 @@ usos-module-link-tile #text {
 <!-- Decyzje -->
 <usos-module-link-tile id="decyzje_link" href="#decyzje_box">
     <template shadowrootmode="open">
-        <a href="#decyzje" style="text-decoration:none; display:block;">
+        <a href="decyzje.html" style="text-decoration:none; display:block;">
             <div style="display:flex; align-items:center; gap:14px; padding:30px; min-height:80px;">
                 
                 <!-- Obrazek po lewej -->
@@ -528,7 +559,7 @@ usos-module-link-tile #text {
 <!-- Zaliczenia etapów -->
 <usos-module-link-tile id="zaliczenia_link" href="#zaliczenia_box">
     <template shadowrootmode="open">
-        <a href="#zaliczenia" style="text-decoration:none; display:block;">
+        <a href="zaliczenia.html" style="text-decoration:none; display:block;">
             <div style="display:flex; align-items:center; gap:14px; padding:30px; min-height:80px;">
                 
                 <!-- Obrazek po lewej -->
@@ -767,12 +798,11 @@ usos-module-link-tile #text {
             </div>
         </a>
     </template>
+
 </usos-module-link-tile>
 
-
-
+</usos-module-link-tile-container>
 </main>
-
 
 
 
@@ -792,25 +822,23 @@ usos-module-link-tile #text {
 
 
 
-<div class="footer-box">
+
+
+<div class="footer-box" id="footer">
+
+
+
     <div class="footer-inner">
-        <img src="https://ejournals.eu/uploads/files/670fd37ff3365_uj-pl-black2.png" alt="USOS" style="height:50px; margin-right:15px;">
+        <img src="https://ejournals.eu/uploads/files/670fd37ff3365_uj-pl-black2.png" alt="USOS">
 
-
-        
         <div>
             <div><strong>Uniwersytet Jagielloński w Krakowie</strong></div>
             <div>ul. Gołębia 24, 31-007 Kraków</div>
             <div>tel. +48 12 663 10 00</div>
             <div>www.uj.edu.pl</div>
-
         </div>
     </div>
 </div>
-
-
-
-
 
 
 
