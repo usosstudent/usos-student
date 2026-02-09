@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <title>Indeks - dla studentów - Uniwersytet Jagielloński w Krakowie</title>
+    <style>
+        /* Reset i baza */
+        * {
+            box-sizing: border-box;
+        }
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        /* Kontener główny jako flex kolumnowy */
+        .container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Skip links */
+        nav.skip-links {
+            background-color: #f5f5f5;
+            padding: 5px 10px;
+            font-size: 0.85rem;
+        }
+        nav.skip-links a {
+            margin-right: 10px;
+            color: #333;
+            text-decoration: none;
+        }
+
+        /* CAS bar */
+        .cas-bar {
+            background-color: #e0e0e0;
+            padding: 8px 20px;
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .cas-bar a {
+            text-decoration: none;
+            color: #333;
+            margin-left: 5px;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            align-items: center;
+            padding: 40px 20px;
+            background-color: #001f4d;
+        }
+        header img {
+            height: 60px;
+            margin-right: 15px;
+        }
+        header span {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* Menu górne */
+        nav#menu-top {
+            background-color: #e0e0e0;
+            padding: 10px;
+            text-transform: uppercase;
+        }
+        nav#menu-top ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        nav#menu-top a {
+            text-decoration: none;
+            color: #333;
+        }
+        nav#menu-top a.active {
+            font-weight: bold;
+        }
+
+        /* Layout główny */
+        #layout-container {
+            flex: 1; /* zajmuje całą dostępną przestrzeń */
+            display: flex;
+            gap: 24px;
+            padding: 20px 0;
+        }
+
+        /* Lewe menu */
+        #menu-left {
+            width: 250px;
+            flex-shrink: 0;
+            background-color: #f5f5f5;
+            padding: 15px;
+        }
+        #menu-left ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        #menu-left li {
+            margin-bottom: 10px;
+        }
+        #menu-left a,
+        #menu-left span {
+            display: block;
+            padding: 8px 10px;
+            border-radius: 4px;
+            width: 100%;
+            color: #333;
+            text-decoration: none;
+        }
+        #menu-left a.main-link {
+            background-color: #e0e0e0;
+            font-weight: bold;
+        }
+        #menu-left ul.submenu {
+            padding-left: 18px;
+            margin-top: 5px;
+        }
+        #menu-left ul.submenu a {
+            padding: 4px 5px;
+        }
+        #menu-left a:hover {
+            background-color: #dcdcdc;
+        }
+
+        /* Główna kolumna */
+        #layout-main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+
+
+        /* Footer */
+        .footer-box {
+            flex-shrink: 0;
+            width: 100%;
+            background-color: #f5f5f5;
+            border-top: 1px solid #ddd;
+        }
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .footer-inner img {
+            height: 50px;
+            margin-right: 15px;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- Skip links -->
+    <nav class="skip-links">
+        <a href="#menu-top">Przejdź do menu głównego</a>
+        <a href="#menu-left">Przejdź do podmenu</a>
+        <a href="#layout-main-content">Przejdź do treści</a>
+    </nav>
+
+    <!-- CAS bar -->
+    <div class="cas-bar">
+        <span><b>Uniwersytet Jagielloński w Krakowie</b> - Centralny System Uwierzytelniania</span>
+        <span>
+            Zalogowany użytkownik: <b>Kamila Szęszoł</b> |
+            <a href="#">zmień hasło</a> |
+            <a href="#">wyloguj się</a> |
+            <a href="#">EN</a>
+        </span>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <img src="https://www.usosweb.uj.edu.pl//img/header-logo.svg" alt="Strona główna">
+        <span>Uniwersytet Jagielloński w Krakowie</span>
+    </header>
+
+    <!-- Menu główne -->
+    <nav id="menu-top">
+        <ul>
+            <li><a href="#">aktualności</a></li>
+            <li><a href="#">katalog</a></li>
+            <li><a href="index.html">mój USOSweb</a></li>
+            <li><a href="index.html" class="active">dla studentów</a></li>
+            <li><a href="#" style="color:#888;">dla pracowników</a></li>
+            <li><a href="#">dla wszystkich</a></li>
+            <li><a href="#">KONTAKT</a></li>
+        </ul>
+    </nav>
+
+    <!-- Główna zawartość -->
+    <div id="layout-container">
+
+        <!-- Lewe menu boczne -->
+        <aside id="menu-left">
+            <ul>
+                <li><a href="usos.student.html">INDEKS</a></li>
+                <li><a href="#obsluga">OBSŁUGA</a></li>
+                <li>
+                    <a href="#rejestracja">REJESTRACJE</a>
+                    <ul class="submenu">
+                        <li><a href="#kalendarz">► kalendarz</a></li>
+                        <li><a href="#koszyk">► koszyk</a></li>
+                        <li><a href="#na-przedmioty">► na przedmioty</a></li>
+                        <li><a href="#bezposrednie-grupy">► bezpośrednie do grup</a></li>
+                        <li><a href="#preferencje-grup">► preferencje grup</a></li>
+                    </ul>
+                </li>
+                <li><a href="#rejestracje-egzaminy">REJESTRACJE NA EGZAMINY</a></li>
+                <li><a href="#zetony">REJESTRACJE ŻETONOWE</a></li>
+                <li>
+                    <span>MOJE STUDIA</span>
+                    <ul class="submenu">
+                        <li><a href="sprawdziany.html" class="main-link">► sprawdziany</a></li>
+                        <li><a href="oceny.html">► oceny</a></li>
+                        <li><a href="#podpiecia">► podpięcia</a></li>
+                        <li><a href="#deklaracja">► deklaracja</a></li>
+                        <li><a href="#decyzje">► decyzje</a></li>
+                        <li><a href="#zaliczenia-etapow">► zaliczenia etapów</a></li>
+                        <li><a href="#grupy-dziekanskie">► grupy dziekańskie</a></li>
+                        <li><a href="#podania">► podania</a></li>
+                        <li><a href="#rankingi">► rankingi</a></li>
+                        <li><a href="#stypendia">► stypendia</a></li>
+                        <li><a href="#wymiana">► wymiana studencka</a></li>
+                        <li><a href="#ankiety">► ankiety</a></li>
+                        <li><a href="#platnosci">► płatności</a></li>
+                        <li><a href="#dyplomy">► dyplomy</a></li>
+                        <li><a href="#obiegowka">► obiegówka</a></li>
+                        <li><a href="#mlegitymacja">► mLegitymacja</a></li>
+                    </ul>
+                </li>
+                <li><a href="#spotkania">SPOTKANIA</a></li>
+            </ul>
+        </aside>
+
+        <!-- Główna treść -->
+        <div id="layout-main-content">
+           <section class="kontakt-usos">
+  <h2>Kontakt z administratorem USOSweb</h2>
+
+  <p><strong>Prosimy o kontakt z administratorem wyłącznie w przypadku problemów technicznych.</strong><br>
+  Zapomniane lub zgubione hasło nie jest problemem technicznym.</p>
+
+  <p><strong>Za poprawność, kompletność i aktualność danych odpowiadają sekretariaty jednostek dydaktycznych.</strong><br>
+  Tam należy zgłaszać błędne dane (np. nieprawidłową ocenę, brak zaliczenia przedmiotu) oraz potrzebę wygenerowania nowego hasła.</p>
+
+  <p><strong>W przypadku problemów z logowaniem należy dokładnie zastosować się do instrukcji logowania:</strong><br>
+  INSTRUKCJA LOGOWANIA</p>
+
+  <h3>Dane wymagane w wiadomości e-mail</h3>
+  <p>Aby przyspieszyć odpowiedź, prosimy o podanie:</p>
+  <ul>
+    <li>imię</li>
+    <li>nazwisko</li>
+    <li>program studiów (kierunek)</li>
+    <li>rok studiów</li>
+    <li>identyfikator logowania</li>
+    <li>kody przedmiotów (jeśli sprawa dotyczy przedmiotu)</li>
+  </ul>
+
+  <p><strong>Prosimy również o podanie tematu wiadomości oraz szczegółowy opis problemu.</strong></p>
+
+  <h3>Dane kontaktowe</h3>
+
+  <p><strong>USOSweb — pomoc techniczna:</strong><br>
+  usosweb@uj.edu.pl</p>
+
+  <p><strong>Problemy z kontem pocztowym lub MS Teams:</strong><br>
+  PomocIT — pomocit.uj.edu.pl</p>
+
+  <p><strong>Wnioski w USOSweb (stypendia):</strong><br>
+  stypendia@uj.edu.pl</p>
+
+  <p><strong>mLegitymacja:</strong><br>
+  mlegitymacja@uj.edu.pl</p>
+
+  <p><strong>Wyszukiwarka pracowników UJ:</strong><br>
+  uj.edu.pl/pracownicy/narzedzia/wyszukiwarka-pracownikow</p>
+
+  <p><strong>Odzyskiwanie hasła SMS:</strong><br>
+  passwordreset.uj.edu.pl</p>
+</section>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-box">
+        <div class="footer-inner">
+            <img src="https://ejournals.eu/uploads/files/670fd37ff3365_uj-pl-black2.png" alt="USOS" style="height:50px; margin-right:15px;">
+
+            <div>
+                <div><strong>Uniwersytet Jagielloński w Krakowie</strong></div>
+                <div>ul. Gołębia 24, 31-007 Kraków</div>
+                <div>tel. +48 12 663 10 00</div>
+                <div>www.uj.edu.pl</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
